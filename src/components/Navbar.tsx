@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import { scrollToSection } from "../lib/scroll";
-import ThemeToggle from "./ThemeToggle";
 import { PROFILE } from "../data/resume";
 
 const NAV_LINKS = [
-  { label: "Home", id: "home" },
-  { label: "Experience", id: "experience" },
-  { label: "Work", id: "work" },
-  { label: "Skills", id: "skills" },
+  { label: "Home", id: "home", mobile: true },
+  { label: "Experience", id: "experience", mobile: false },
+  { label: "Work", id: "work", mobile: true },
+  { label: "Skills", id: "skills", mobile: false },
 ];
 
 export default function Navbar() {
@@ -62,7 +61,9 @@ export default function Navbar() {
             <button
               key={link.id}
               onClick={() => scrollToSection(link.id)}
-              className={`rounded-full px-3 py-1.5 text-xs transition-colors duration-200 sm:px-4 sm:py-2 sm:text-sm ${
+              className={`rounded-full px-2.5 py-1.5 text-xs transition-colors duration-200 sm:px-4 sm:py-2 sm:text-sm ${
+                link.mobile ? "" : "hidden sm:block"
+              } ${
                 active === link.id
                   ? "bg-stroke/50 text-text-primary"
                   : "text-muted hover:bg-stroke/50 hover:text-text-primary"
@@ -74,7 +75,7 @@ export default function Navbar() {
         </div>
 
         {/* Divider */}
-        <div className="mx-1 hidden h-5 w-px bg-stroke sm:block" />
+        <div className="mx-1 h-5 w-px bg-stroke" />
 
         {/* Say hi button */}
         <a
@@ -82,17 +83,11 @@ export default function Navbar() {
           className="group relative inline-flex items-center rounded-full"
         >
           <span className="accent-gradient absolute rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100" style={{ inset: "-2px" }} />
-          <span className="relative inline-flex items-center gap-1 rounded-full bg-surface px-3 py-1.5 text-xs text-text-primary backdrop-blur-md sm:px-4 sm:py-2 sm:text-sm">
+          <span className="relative inline-flex items-center gap-1 rounded-full bg-surface px-2.5 py-1.5 text-xs text-text-primary backdrop-blur-md sm:px-4 sm:py-2 sm:text-sm">
             Say hi
             <span aria-hidden className="text-[0.85em]">↗</span>
           </span>
         </a>
-
-        {/* Divider */}
-        <div className="mx-1 hidden h-5 w-px bg-stroke sm:block" />
-
-        {/* Theme toggle */}
-        <ThemeToggle />
       </div>
     </nav>
   );

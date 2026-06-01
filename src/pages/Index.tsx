@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import LoadingScreen from "../components/LoadingScreen";
+import TextureOverlay from "../components/TextureOverlay";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import Experience from "../components/Experience";
@@ -28,6 +29,7 @@ export default function Index() {
         transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
         className="relative"
       >
+        <TextureOverlay />
         <Navbar />
         <Hero />
         <Experience />

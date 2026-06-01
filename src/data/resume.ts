@@ -13,11 +13,11 @@ export const PROFILE = {
   university: "Harcourt Butler Technical University, Kanpur",
   location: "India",
   email: "pratiksri1976@gmail.com",
-  phone: "+91 99189 27749",
+  phone: "+91 9918927749",
   github: "https://github.com/prateek-workspace/",
   linkedin: "https://www.linkedin.com/in/prateek-workspace",
   portfolio: "https://prateek-workspace.github.io/portfolio/",
-  resumePdf: "/Prateek_Srivastava_Resume.pdf",
+  resumePdf: "https://drive.google.com/file/d/173Owsqtck-Qez0IattsHCZt7XimqIJdF/view",
   roles: ["Backend", "Full-Stack", "AI", "Builder"],
   tagline:
     "Backend & AI engineer building agentic systems, real-time platforms, and production-grade applications that reach hundreds of thousands of users.",
@@ -71,7 +71,9 @@ export const EXPERIENCE: Experience[] = [
 export interface Project {
   title: string;
   category: string;
-  link: string;
+  summary: string;
+  demo?: string;
+  repo?: string;
   stack: string[];
   points: string[];
   image: string;
@@ -83,7 +85,10 @@ export const PROJECTS: Project[] = [
   {
     title: "ASHA AI",
     category: "Voice-First Rural Health Companion",
-    link: "https://asha-ai-techx.pages.dev/",
+    summary:
+      "A multilingual, voice-first AI health companion bringing healthcare to rural users over WhatsApp & mobile.",
+    demo: "https://asha-ai-techx.pages.dev/",
+    repo: "",
     stack: [
       "FastAPI",
       "React",
@@ -110,7 +115,10 @@ export const PROJECTS: Project[] = [
   {
     title: "Pulse AI",
     category: "Clinical Surveillance System",
-    link: "https://pulseai-hackshodh.pages.dev/",
+    summary:
+      "Event-driven clinical surveillance with a 0–100 CareScore and real-time, multi-role dashboards.",
+    demo: "https://pulseai-hackshodh.pages.dev/",
+    repo: "", 
     stack: [
       "FastAPI",
       "React",
@@ -135,7 +143,10 @@ export const PROJECTS: Project[] = [
   {
     title: "AI Job Hunting Agent",
     category: "Agentic AI + Automation",
-    link: "https://www.linkedin.com/posts/prateek-workspace_ai-jobsearch-automation-activity-7348274499743555584-3a0i",
+    summary:
+      "An autonomous n8n pipeline that scrapes, ranks & alerts on job fits every 6 hours — saving 10+ hrs/week.",
+    demo: "https://www.linkedin.com/posts/prateek-workspace_ai-jobsearch-automation-activity-7348274499743555584-3a0i",
+    repo: "", 
     stack: ["n8n", "Agentic AI", "Automation", "Google Sheets API"],
     points: [
       "Built an AI-driven job pipeline scraping platforms and ranking jobs based on resume fit.",
@@ -148,9 +159,41 @@ export const PROJECTS: Project[] = [
     aspect: "aspect-[16/11]",
   },
   {
+    title: "MDRS",
+    category: "Multimodal Deception Risk Scorer · iSAFE World Finalist",
+    summary:
+      "World-finalist, explainable media-authenticity scorer — 0–100 deception risk across image, video, audio & text, with a Chrome extension for in-page triage.",
+    demo: "https://isafe-hackathon.pages.dev/", 
+    repo: "https://github.com/prateekhbtu/isafe-hackathon",
+    stack: [
+      "Python",
+      "FastAPI",
+      "Next.js 14",
+      "Chrome Extension (MV3)",
+      "AI Detectors",
+      "NewsAPI",
+      "Gemini",
+    ],
+    points: [
+      "World Finalist at the iSAFE Hackathon for an explainable, probabilistic media-authenticity risk scorer (0–100).",
+      "Built multimodal detectors for image, video, audio, and text — surfacing manipulation artifacts, temporal/spectral anomalies, synthesis cues, and stylometric drift.",
+      "Engineered a weighted risk engine with threshold mapping, signal-level confidence, evidence breakdown, and human-in-the-loop reviewer guidance.",
+      "Shipped a stateless FastAPI gateway with pluggable detectors and bounded URL media ingestion for horizontal scaling.",
+      "Created a Manifest V3 Chrome extension (content script + service worker + side panel) for in-context scanning on any web page.",
+      "Added optional external verification via NewsAPI credibility checks and Gemini-based risk synthesis.",
+    ],
+    image:
+      "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80",
+    span: "md:col-span-7",
+    aspect: "aspect-[16/11]",
+  },
+  {
     title: "Discom",
     category: "Mentor Connect Platform",
-    link: "http://discom.pythonanywhere.com/",
+    summary:
+      "A real-time mentor-connect platform with chat, video calls & WebSockets — supporting 100+ concurrent users.",
+    demo: "http://discom.pythonanywhere.com/",
+    repo: "", 
     stack: ["React", "WebSockets", "Real-Time Systems", "Full-Stack"],
     points: [
       "Built a real-time collaboration platform with chat, video calls, and WebSockets, supporting 100+ concurrent users.",
@@ -164,7 +207,10 @@ export const PROJECTS: Project[] = [
   {
     title: "Targeted Commenting Agent",
     category: "Agentic AI + Backend",
-    link: "https://github.com/prateek-workspace/auto-commenting-agent",
+    summary:
+      "A human-in-the-loop agent for safe, auditable social engagement built on a state-machine workflow.",
+    demo: "https://auto-commenting-agent.onrender.com/docs", 
+    repo: "https://github.com/prateek-workspace/auto-commenting-agent",
     stack: ["Agentic AI", "LLM", "State Machine", "Backend"],
     points: [
       "Built a human-in-the-loop agentic system for targeted social media engagement across platforms.",
@@ -174,8 +220,8 @@ export const PROJECTS: Project[] = [
     ],
     image:
       "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=1200&q=80",
-    span: "md:col-span-12",
-    aspect: "aspect-[21/9]",
+    span: "md:col-span-5",
+    aspect: "aspect-[16/11]",
   },
 ];
 
@@ -263,9 +309,9 @@ export interface Achievement {
 
 export const ACHIEVEMENTS: Achievement[] = [
   {
-    title: "iSAFE Hackathon — Grand Finalist",
+    title: "iSAFE Hackathon — World Finalist",
     detail:
-      "Grand Finalist at the iSAFE Hackathon by International Telecommunication (UK) among 10K+ participants worldwide.",
+      "World Finalist at the iSAFE Hackathon by International Telecommunication (UK) among 10K+ participants worldwide.",
     meta: "10K+ worldwide",
   },
   {
@@ -353,6 +399,6 @@ export const EDUCATION: Education[] = [
 export const STATS: { value: string; label: string }[] = [
   { value: "100K+", label: "Users Reached" },
   { value: "5×", label: "Hackathons Won" },
-  { value: "94%", label: "Model Accuracy Achieved" },
+  { value: "10+", label: "Projects delivered" },
   { value: "600+", label: "Teams Outperformed" },
 ];

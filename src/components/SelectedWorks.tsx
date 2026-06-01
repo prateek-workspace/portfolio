@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import SectionHeader from "./SectionHeader";
 import ProjectModal from "./ProjectModal";
+import { GithubIcon } from "./icons";
 import { PROFILE, PROJECTS, type Project } from "../data/resume";
 
 const HALFTONE = "radial-gradient(circle, #000 1px, transparent 1px)";
@@ -15,11 +16,17 @@ function ProjectCard({
   index: number;
   onOpen: () => void;
 }) {
+  const repoHref = project.repo ?? PROFILE.github;
+
   return (
-    <motion.button
+    <motion.div
       onClick={onOpen}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && onOpen()}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
+      whileHover={{ y: -4 }}
       transition={{
         duration: 0.8,
         ease: [0.25, 0.1, 0.25, 1],
@@ -42,36 +49,65 @@ function ProjectCard({
         style={{ backgroundImage: HALFTONE, backgroundSize: "4px 4px" }}
       />
 
-      {/* Bottom gradient + always-visible title */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-5 md:p-6">
+      {/* Bottom gradient + always-visible title (hidden on hover) */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 to-transparent p-5 transition-opacity duration-300 group-hover:opacity-0 md:p-6">
         <p className="text-[10px] uppercase tracking-[0.2em] text-white/60">
           {project.category}
         </p>
         <h3 className="font-display text-2xl italic text-white md:text-3xl">
           {project.title}
         </h3>
-        <div className="mt-2 hidden flex-wrap gap-1.5 sm:flex">
-          {project.stack.slice(0, 4).map((tech) => (
-            <span
-              key={tech}
-              className="rounded-full border border-white/20 bg-white/10 px-2 py-0.5 text-[10px] text-white/80 backdrop-blur-sm"
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
       </div>
 
-      {/* Hover blur layer */}
-      <div className="absolute inset-0 flex items-center justify-center bg-bg/70 opacity-0 backdrop-blur-lg transition-opacity duration-500 group-hover:opacity-100">
-        <span className="relative inline-flex rounded-full p-[1.5px]">
-          <span className="accent-gradient-animated absolute inset-0 animate-gradient-shift rounded-full" />
-          <span className="relative inline-flex items-center gap-1.5 rounded-full bg-white px-5 py-2.5 text-sm text-black">
-            View — <span className="font-display italic">{project.title}</span>
-          </span>
-        </span>
+      {/* Hover detail layer: crisp summary + action pills */}
+      <div className="absolute inset-0 flex flex-col justify-end gap-4 bg-bg/75 p-6 opacity-0 backdrop-blur-xl transition-opacity duration-500 group-hover:opacity-100 md:p-8">
+        <div>
+          <p className="mb-2 text-[10px] uppercase tracking-[0.25em] text-muted">
+            {project.category}
+          </p>
+          <h3 className="mb-3 font-display text-3xl italic text-text-primary md:text-4xl">
+            {project.title}
+          </h3>
+          <p className="max-w-md text-sm leading-relaxed text-text-primary/80 md:text-base">
+            {project.summary}
+          </p>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-3">
+          {/* See demo pill */}
+          {project.demo && (
+            <a
+              href={project.demo}
+              target="_blank"
+              rel="noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="group/btn relative inline-flex rounded-full"
+            >
+              <span className="accent-gradient-animated absolute inset-0 animate-gradient-shift rounded-full" />
+              <span className="relative m-[1.5px] inline-flex items-center gap-1.5 rounded-full bg-white px-5 py-2.5 text-sm text-black">
+                See demo
+                <span aria-hidden className="transition-transform duration-300 group-hover/btn:translate-x-0.5">↗</span>
+              </span>
+            </a>
+          )}
+
+          {/* GitHub icon pill */}
+          <a
+            href={repoHref}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={`${project.title} on GitHub`}
+            onClick={(e) => e.stopPropagation()}
+            className="group/gh relative inline-grid h-[46px] w-[46px] place-items-center rounded-full"
+          >
+            <span className="accent-gradient absolute inset-0 rounded-full opacity-0 transition-opacity duration-300 group-hover/gh:opacity-100" />
+            <span className="absolute inset-[1.5px] grid place-items-center rounded-full border border-stroke bg-surface text-text-primary">
+              <GithubIcon size={20} />
+            </span>
+          </a>
+        </div>
       </div>
-    </motion.button>
+    </motion.div>
   );
 }
 

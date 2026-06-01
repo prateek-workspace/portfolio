@@ -16,7 +16,7 @@ function HeadingText({ heading }: { heading: string }) {
     <>
       {parts.map((part, i) =>
         part.startsWith("*") && part.endsWith("*") ? (
-          <span key={i} className="font-display italic">
+          <span key={i} className="text-accent-gradient font-display italic">
             {part.slice(1, -1)}
           </span>
         ) : (

@@ -69,7 +69,7 @@ export default function Explorations() {
           <span className="h-px w-8 bg-stroke" />
         </div>
         <h2 className="mb-4 text-4xl leading-tight tracking-tight text-text-primary md:text-6xl lg:text-7xl">
-          Where I <span className="font-display italic">go deep</span>
+          Where I <span className="text-accent-gradient font-display italic">go deep</span>
         </h2>
         <p className="mb-8 max-w-md text-sm text-muted md:text-base">
           The domains I keep returning to — from agentic AI and computer vision

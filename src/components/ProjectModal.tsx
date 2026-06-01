@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect } from "react";
-import type { Project } from "../data/resume";
+import { PROFILE, type Project } from "../data/resume";
+import { GithubIcon } from "./icons";
 
 export default function ProjectModal({
   project,
@@ -91,21 +92,34 @@ export default function ProjectModal({
                 ))}
               </div>
 
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noreferrer"
-                className="group relative inline-flex rounded-full"
-              >
-                <span
-                  className="accent-gradient absolute rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                  style={{ inset: "-2px" }}
-                />
-                <span className="relative inline-flex items-center gap-2 rounded-full bg-text-primary px-6 py-3 text-sm text-bg transition-colors duration-300 group-hover:bg-surface group-hover:text-text-primary">
-                  Visit project
-                  <span aria-hidden>↗</span>
-                </span>
-              </a>
+              <div className="flex flex-wrap items-center gap-3">
+                {project.demo && (
+                  <a
+                    href={project.demo}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group relative inline-flex rounded-full"
+                  >
+                    <span
+                      className="accent-gradient absolute rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                      style={{ inset: "-2px" }}
+                    />
+                    <span className="relative inline-flex items-center gap-2 rounded-full bg-text-primary px-6 py-3 text-sm text-bg transition-colors duration-300 group-hover:bg-surface group-hover:text-text-primary">
+                      See demo
+                      <span aria-hidden>↗</span>
+                    </span>
+                  </a>
+                )}
+                <a
+                  href={project.repo ?? PROFILE.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full border border-stroke bg-bg px-5 py-3 text-sm text-text-primary transition-colors duration-300 hover:bg-surface"
+                >
+                  <GithubIcon size={18} />
+                  View code
+                </a>
+              </div>
             </div>
           </motion.div>
         </motion.div>
