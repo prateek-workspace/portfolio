@@ -18,9 +18,9 @@ export const PROFILE = {
   linkedin: "https://www.linkedin.com/in/prateek-workspace",
   portfolio: "https://prateek-workspace.github.io/portfolio/",
   resumePdf: "https://drive.google.com/file/d/173Owsqtck-Qez0IattsHCZt7XimqIJdF/view",
-  roles: ["Backend", "Full-Stack", "AI", "Builder"],
+  roles: ["Backend Developer", "Full-Stack Developer", "AI Engineer", "Automation Developer"],
   tagline:
-    "Backend & AI engineer building agentic systems, real-time platforms, and production-grade applications that reach hundreds of thousands of users.",
+    "Backend & AI Engineer building agentic systems, real-time platforms, and production-grade applications that reach hundreds of thousands of users.",
 } as const;
 
 export interface Experience {

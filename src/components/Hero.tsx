@@ -81,8 +81,6 @@ export default function Hero() {
           >
             {ROLES[roleIndex]}
           </span>{" "}
-          Engineer.
-          {/* engineer, lives in {PROFILE.location}. */}
         </p>
 
         <p className="blur-in mb-12 max-w-xl text-sm text-muted md:text-base">
