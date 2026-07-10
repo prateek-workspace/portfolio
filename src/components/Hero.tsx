@@ -74,7 +74,7 @@ export default function Hero() {
         </h1>
 
         <p className="blur-in mb-4 text-lg text-text-primary/90 md:text-xl">
-          A{" "}
+          {" "}
           <span
             key={roleIndex}
             className="text-accent-gradient inline-block animate-role-fade-in font-display italic"
