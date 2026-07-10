@@ -87,7 +87,7 @@ export const PROJECTS: Project[] = [
     category: "Voice-First Rural Health Companion",
     summary:
       "A multilingual, voice-first AI health companion bringing healthcare to rural users over WhatsApp & mobile.",
-    demo: "https://asha-ai-techx.pages.dev/",
+    demo: "https://asha-ai.pages.dev/",
     repo: "",
     stack: [
       "FastAPI",
@@ -309,9 +309,9 @@ export interface Achievement {
 
 export const ACHIEVEMENTS: Achievement[] = [
   {
-    title: "iSAFE Hackathon — World Finalist",
+    title: "iSAFE Hackathon — Global Win",
     detail:
-      "World Finalist at the iSAFE Hackathon by International Telecommunication (UK) among 10K+ participants worldwide.",
+      "Global Winner of the iSAFE Hackathon by International Telecommunication (UK) among 10K+ participants worldwide.",
     meta: "10K+ worldwide",
   },
   {
